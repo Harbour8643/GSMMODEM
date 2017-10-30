@@ -1,0 +1,2128 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Harbour.Utils</name>
+    </assembly>
+    <members>
+        <member name="T:Harbour.Utils.ConfigHelper">
+            <summary>
+            web.config操作类
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.ConfigHelper.GetConfigString(System.String)">
+            <summary>
+            得到AppSettings中的配置字符串信息
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.ConfigHelper.GetConfigBool(System.String)">
+            <summary>
+            得到AppSettings中的配置Bool信息
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.ConfigHelper.GetConfigDecimal(System.String)">
+            <summary>
+            得到AppSettings中的配置Decimal信息
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.ConfigHelper.GetConfigInt(System.String)">
+            <summary>
+            得到AppSettings中的配置int信息
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.ConfigHelper.GetAppSetting(System.String)">
+            <summary>
+            GetAppSetting
+            </summary>
+            <param name="name">名</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.ConfigHelper.SetAppSetting(System.String,System.String)">
+            <summary>
+            设置AppSettings
+            </summary>
+            <param name="name">名</param>
+            <param name="value">值</param>
+            <returns></returns>
+        </member>
+        <member name="T:Harbour.Utils.CacheHelper">
+            <summary>
+            Cache缓存帮助类
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.CacheHelper.GetCache(System.String)">
+            <summary>
+            获取数据缓存
+            </summary>
+            <param name="CacheKey">缓存键</param>
+        </member>
+        <member name="M:Harbour.Utils.CacheHelper.SetCacheAbsEx(System.String,System.Object)">
+            <summary>
+            设置数据缓存(默认绝对时间1小时)
+            </summary>
+            <param name="CacheKey">缓存键</param>
+            <param name="objObject">缓存值</param>
+        </member>
+        <member name="M:Harbour.Utils.CacheHelper.SetCacheSlidEx(System.String,System.Object)">
+            <summary>
+            设置数据缓存(默认滑动时间20分钟)
+            </summary>
+            <param name="CacheKey">缓存键</param>
+            <param name="objObject">缓存值</param>
+        </member>
+        <member name="M:Harbour.Utils.CacheHelper.SetCache(System.String,System.Object,System.DateTime)">
+            <summary>
+            设置数据缓存
+            </summary>
+            <param name="CacheKey">缓存键</param>
+            <param name="objObject">缓存值</param>
+            <param name="absoluteExpiration">绝对过期时间</param>
+        </member>
+        <member name="M:Harbour.Utils.CacheHelper.SetCache(System.String,System.Object,System.TimeSpan)">
+            <summary>
+            设置数据缓存
+            </summary>
+            <param name="CacheKey">缓存键</param>
+            <param name="objObject">缓存值</param>
+            <param name="slidingExpiration">滑动过期时间</param>
+        </member>
+        <member name="M:Harbour.Utils.CacheHelper.SetCache(System.String,System.Object,System.Web.Caching.CacheDependency,System.DateTime)">
+            <summary>
+            设置数据缓存
+            </summary>
+            <param name="CacheKey">缓存键</param>
+            <param name="objObject">缓存值</param>
+            <param name="dependencies">缓存依赖项</param>
+            <param name="absoluteExpiration">绝对过期时间</param>
+        </member>
+        <member name="M:Harbour.Utils.CacheHelper.SetCache(System.String,System.Object,System.Web.Caching.CacheDependency,System.TimeSpan)">
+            <summary>
+            设置数据缓存
+            </summary>
+            <param name="CacheKey">缓存键</param>
+            <param name="objObject">缓存值</param>
+            <param name="dependencies">缓存依赖项</param>
+            <param name="slidingExpiration">滑动过期时间</param>
+        </member>
+        <member name="M:Harbour.Utils.CacheHelper.SetCache(System.String,System.Object,System.Web.Caching.CacheDependency,System.DateTime,System.TimeSpan,System.Web.Caching.CacheItemPriority,System.Web.Caching.CacheItemRemovedCallback)">
+            <summary>
+            设置数据缓存
+            </summary>
+            <param name="CacheKey">缓存键</param>
+            <param name="objObject">缓存值</param>
+            <param name="dependencies">缓存依赖项</param>
+            <param name="absoluteExpiration">绝对过期时间：请使用 System.DateTime.UtcNow 而不是 System.DateTime.Now 作为此参数值。如果使用绝对到期，则 slidingExpiration 参数必须为Cache.NoSlidingExpiration</param>
+            <param name="slidingExpiration">滑动过期时间：最后一次访问所插入对象时与该对象到期时之间的时间间隔。如果该值等效于 20 分钟，则对象在最后一次被访问 20 分钟之后将到期并被从缓存中移除。如果使用可调到期，则absoluteExpiration 参数必须为Cache.NoAbsoluteExpiration</param>
+            <param name="priority">内存自动回收优先级</param>
+            <param name="onRemoveCallback">缓存移除回调通知（委托）</param>
+        </member>
+        <member name="M:Harbour.Utils.CacheHelper.Remove(System.String)">
+            <summary>
+            移除指定数据缓存
+            </summary>
+            <param name="CacheKey">缓存键</param>
+        </member>
+        <member name="M:Harbour.Utils.CacheHelper.RemoveAllCache">
+            <summary>
+            移除全部缓存
+            </summary>
+        </member>
+        <member name="T:Harbour.Utils.CookieHelper">
+            <summary>
+            Cookie帮助类
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.CookieHelper.DeleteCookie(System.String)">
+            <summary>
+            清除指定Cookie
+            </summary>
+            <param name="CookieName">Cookie名</param>
+        </member>
+        <member name="M:Harbour.Utils.CookieHelper.GetCookieValue(System.String)">
+            <summary>
+            获取指定Cookie值
+            </summary>
+            <param name="CookieName">Cookie名</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.CookieHelper.SetCookieValue(System.String,System.String)">
+            <summary>
+            设置指定名称的Cookie的值
+            </summary>
+            <param name="name">Cookie名称</param>
+            <param name="value">值</param>
+        </member>
+        <member name="M:Harbour.Utils.CookieHelper.SetCookieValue(System.String,System.String,System.Double)">
+            <summary>
+            设置指定名称的Cookie的值
+            </summary>
+            <param name="name">Cookie名称</param>
+            <param name="value">值</param>
+            <param name="expires">过期时间(分钟)</param>
+        </member>
+        <member name="M:Harbour.Utils.CookieHelper.GetCookie(System.String,System.String)">
+            <summary>
+            获得指定名称的Cookie中特定键的值
+            </summary>
+            <param name="name">Cookie名称</param>
+            <param name="key">键</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.CookieHelper.SetCookie(System.String,System.String,System.String)">
+            <summary>
+            设置指定名称的Cookie特定键的值
+            </summary>
+            <param name="name">Cookie名称</param>
+            <param name="key">键</param>
+            <param name="value">值</param>
+        </member>
+        <member name="M:Harbour.Utils.CookieHelper.SetCookie(System.String,System.String,System.String,System.Double)">
+            <summary>
+            设置指定名称的Cookie特定键的值
+            </summary>
+            <param name="name">Cookie名称</param>
+            <param name="key">键</param>
+            <param name="value">值</param>
+            <param name="expires">过期时间</param>
+        </member>
+        <member name="T:Harbour.Utils.AESEncrypt">
+            <summary>
+            AES对称加密解密类
+            </summary>
+        </member>
+        <member name="F:Harbour.Utils.AESEncrypt._passwd">
+            <summary>
+            密钥(32位,不足在后面补0)
+            </summary>
+        </member>
+        <member name="F:Harbour.Utils.AESEncrypt._cipherMode">
+            <summary>
+            运算模式
+            </summary>
+        </member>
+        <member name="F:Harbour.Utils.AESEncrypt._paddingMode">
+            <summary>
+            填充模式
+            </summary>
+        </member>
+        <member name="F:Harbour.Utils.AESEncrypt._encoding">
+            <summary>
+            字符串采用的编码
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.AESEncrypt.GetKeyArray(System.String)">
+            <summary>
+            获取32byte密钥数据
+            </summary>
+            <param name="password">密码(32byte多退少补)</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.AESEncrypt.ConvertByteToString(System.Byte[])">
+            <summary>
+            将字符数组转换成字符串
+            </summary>
+            <param name="inputData">字符数组</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.AESEncrypt.ConvertStringToByte(System.String)">
+            <summary>
+            将字符串转换成字符数组
+            </summary>
+            <param name="inputString">字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.AESEncrypt.Encrypt(System.Byte[],System.String)">
+            <summary>
+            加密字节数据
+            </summary>
+            <param name="inputData">字节数据</param>
+            <param name="password">密码</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.AESEncrypt.Encrypt(System.String,System.String)">
+            <summary>
+            加密字符串(加密为16进制字符串)
+            </summary>
+            <param name="inputString">字符串</param>
+            <param name="password">密码</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.AESEncrypt.EncryptString(System.String)">
+            <summary>
+            字符串加密(加密为16进制字符串)
+            </summary>
+            <param name="inputString">需要加密的字符串</param>
+            <returns>加密后的字符串</returns>
+        </member>
+        <member name="M:Harbour.Utils.AESEncrypt.Decrypt(System.Byte[],System.String)">
+            <summary>
+            解密字节数组
+            </summary>
+            <param name="inputData">要解密的字节数据</param>
+            <param name="password">密码</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.AESEncrypt.Decrypt(System.String,System.String)">
+            <summary>
+            解密16进制的字符串为字符串
+            </summary>
+            <param name="inputString">要解密的字符串</param>
+            <param name="password">密码</param>
+            <returns>字符串</returns>
+        </member>
+        <member name="M:Harbour.Utils.AESEncrypt.DecryptString(System.String)">
+            <summary>
+            解密16进制的字符串为字符串
+            </summary>
+            <param name="inputString">需要解密的字符串</param>
+            <returns>解密后的字符串</returns>
+        </member>
+        <member name="T:Harbour.Utils.DESEncrypt">
+            <summary>
+            DES加密/解密类。
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.DESEncrypt.Encrypt(System.String)">
+            <summary>
+            加密
+            </summary>
+            <param name="Text">明文</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.DESEncrypt.Encrypt(System.String,System.String)">
+            <summary> 
+            加密数据 
+            </summary> 
+            <param name="Text">明文</param> 
+            <param name="Key">Key</param>
+            <returns>密文Base64编码文本</returns> 
+        </member>
+        <member name="M:Harbour.Utils.DESEncrypt.Encrypt(System.String,System.String,System.String)">
+            <summary> 
+            加密数据 
+            </summary> 
+            <param name="Text">明文</param> 
+            <param name="Key">Key</param> 
+            <param name="IV">向量</param>
+            <returns>密文Base64编码文本</returns> 
+        </member>
+        <member name="M:Harbour.Utils.DESEncrypt.Encrypt(System.String,System.String,System.String,System.Text.Encoding)">
+            <summary> 
+            加密数据 
+            </summary> 
+            <param name="Text">明文</param> 
+            <param name="Key">Key</param> 
+            <param name="IV">向量</param>
+            <param name="Encod">编码方式</param>
+            <returns>密文Base64编码文本</returns> 
+        </member>
+        <member name="M:Harbour.Utils.DESEncrypt.Decrypt(System.String)">
+            <summary>
+            解密
+            </summary>
+            <param name="Text">密文（Base64编码）</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.DESEncrypt.Decrypt(System.String,System.String)">
+            <summary> 
+            解密数据 
+            </summary> 
+            <param name="Text">密文（Base64编码）</param> 
+            <param name="Key">Key</param> 
+            <returns>明文</returns> 
+        </member>
+        <member name="M:Harbour.Utils.DESEncrypt.Decrypt(System.String,System.String,System.String)">
+            <summary> 
+            解密数据 
+            </summary> 
+            <param name="Text">密文（Base64编码）</param> 
+            <param name="Key">Key</param> 
+            <param name="IV">向量</param> 
+            <returns>明文</returns> 
+        </member>
+        <member name="M:Harbour.Utils.DESEncrypt.Decrypt(System.String,System.String,System.String,System.Text.Encoding)">
+            <summary>
+            解密数据
+            </summary>
+            <param name="Text">密文（Base64编码）</param>
+            <param name="Key">密钥</param>
+            <param name="IV">向量</param>
+            <param name="Encod">编码方式</param>
+            <returns>明文</returns>
+        </member>
+        <member name="T:Harbour.Utils.HashEncode">
+            <summary>
+            得到随机安全码（哈希加密）。
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.HashEncode.GetSecurity">
+            <summary>
+            得到随机哈希加密字符串
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HashEncode.GetRandomValue">
+            <summary>
+            得到一个随机数值
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HashEncode.HashEncoding(System.String)">
+            <summary>
+            哈希加密一个字符串
+            </summary>
+            <param name="Security"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Harbour.Utils.MD5Encrypt">
+            <summary>
+            MD5加密
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.MD5Encrypt.MD5(System.String)">
+            <summary>
+            MD5散列
+            </summary>
+            <param name="inputStr">明文</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.MD5Encrypt.CreatePasswordMd5(System.String,System.String)">
+            <summary>
+            创建密码MD5
+            </summary>
+            <param name="Pwd">原密码</param>
+            <param name="Salt">盐值</param>
+            <returns></returns>
+        </member>
+        <member name="T:Harbour.Utils.RSACryption">
+            <summary>
+            RSACryption,.netFramework中提供的RSA算法规定，每次加密的字节数不能超过密钥的长度值减去11，而每次加密得到的密文长度恰恰是密钥的长度，可采用分段加密
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.RSACryption.RSAKey(System.String@,System.String@)">
+            <summary>
+            RSA产生密钥
+            </summary>
+            <param name="xmlPrivateKeys">xml私钥</param>
+            <param name="xmlPublicKey">xml公钥</param>
+        </member>
+        <member name="M:Harbour.Utils.RSACryption.RSAEncrypt(System.String,System.String)">
+            <summary>
+            RSA的加密函数，KEY必须是XML的形式,返回的是字符串，该加密方式有长度限制的！
+            </summary>
+            <param name="xmlPublicKey">xml公钥</param>
+            <param name="encryptString">待加密的字符串</param>
+            <returns>密文（Base64）</returns>
+        </member>
+        <member name="M:Harbour.Utils.RSACryption.RSAEncrypt(System.String,System.String,System.Text.Encoding)">
+            <summary>
+            RSA的加密函数，KEY必须是XML的形式,返回的是字符串，该加密方式有长度限制的！
+            </summary>
+            <param name="xmlPublicKey">xml公钥</param>
+            <param name="encryptString">待加密的字符串</param>
+            <param name="Encod">编码方式</param>
+            <returns>密文（Base64）</returns>
+        </member>
+        <member name="M:Harbour.Utils.RSACryption.RSADecrypt(System.String,System.String)">
+            <summary>
+            RSA的解密函数,KEY必须是XML的形式
+            </summary>
+            <param name="xmlPrivateKey">私钥</param>
+            <param name="decryptString">待解密的字符串(Base64)</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.RSACryption.RSADecrypt(System.String,System.String,System.Text.Encoding)">
+            <summary>
+            RSA的解密函数,KEY必须是XML的形式
+            </summary>
+            <param name="xmlPrivateKey">私钥</param>
+            <param name="decryptString">待解密的字符串(Base64)</param>
+            <param name="Encod">编码方式</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.RSACryption.RSABlockEncrypt(System.String,System.String)">
+            <summary>
+            分段加密，KEY必须是XML的形式
+            </summary>
+            <param name="xmlPublicKey">公钥</param>
+            <param name="encryptString">待加密的字符串</param>
+            <returns>密文（Base64）</returns>
+        </member>
+        <member name="M:Harbour.Utils.RSACryption.RSABlockEncrypt(System.String,System.String,System.Text.Encoding)">
+            <summary>
+            分段加密，KEY必须是XML的形式
+            </summary>
+            <param name="xmlPublicKey">公钥</param>
+            <param name="encryptString">待加密的字符串</param>
+            <param name="Encod">编码方式</param>
+            <returns>密文（Base64）</returns>
+        </member>
+        <member name="M:Harbour.Utils.RSACryption.RSABlockDecrypt(System.String,System.String)">
+            <summary>
+            RSA的分段解密函数,KEY必须是XML的形式
+            </summary>
+            <param name="xmlPrivateKey">密钥</param>
+            <param name="decryptString">待解密的字符串(Base64)</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.RSACryption.RSABlockDecrypt(System.String,System.String,System.Text.Encoding)">
+            <summary>
+            RSA的分段解密函数,KEY必须是XML的形式
+            </summary>
+            <param name="xmlPrivateKey">密钥</param>
+            <param name="decryptString">待解密的字符串(Base64)</param>
+            <param name="Encod">编码方式</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.RSACryption.GetHash(System.String,System.Byte[]@)">
+            <summary>
+            获取Hash描述表
+            </summary>
+            <param name="strSource">待签名的字符串</param>
+            <param name="HashData">Hash描述</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.RSACryption.GetHash(System.String,System.String@)">
+            <summary>
+            获取Hash描述表
+            </summary>
+            <param name="strSource">待签名的字符串</param>
+            <param name="strHashData">Hash描述</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.RSACryption.GetHash(System.IO.FileStream,System.Byte[]@)">
+            <summary>
+            获取Hash描述表
+            </summary>
+            <param name="objFile">待签名的文件</param>
+            <param name="HashData">Hash描述</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.RSACryption.GetHash(System.IO.FileStream,System.String@)">
+            <summary>
+            获取Hash描述表
+            </summary>
+            <param name="objFile">待签名的文件</param>
+            <param name="strHashData">Hash描述</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.RSACryption.SignatureFormatter(System.String,System.Byte[],System.Byte[]@)">
+            <summary>
+            RSA签名
+            </summary>
+            <param name="strKeyPrivate">私钥</param>
+            <param name="HashbyteSignature">待签名Hash描述</param>
+            <param name="EncryptedSignatureData">签名后的结果</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.RSACryption.SignatureFormatter(System.String,System.Byte[],System.String@)">
+            <summary>
+            RSA签名
+            </summary>
+            <param name="strKeyPrivate">私钥</param>
+            <param name="HashbyteSignature">待签名Hash描述</param>
+            <param name="strEncryptedSignatureData">签名后的结果</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.RSACryption.SignatureFormatter(System.String,System.String,System.Byte[]@)">
+            <summary>
+            RSA签名
+            </summary>
+            <param name="strKeyPrivate">私钥</param>
+            <param name="strHashbyteSignature">待签名Hash描述</param>
+            <param name="EncryptedSignatureData">签名后的结果</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.RSACryption.SignatureFormatter(System.String,System.String,System.String@)">
+            <summary>
+            RSA签名
+            </summary>
+            <param name="strKeyPrivate">私钥</param>
+            <param name="strHashbyteSignature">待签名Hash描述</param>
+            <param name="strEncryptedSignatureData">签名后的结果</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.RSACryption.SignatureDeformatter(System.String,System.Byte[],System.Byte[])">
+            <summary>
+            RSA签名验证
+            </summary>
+            <param name="strKeyPublic">公钥</param>
+            <param name="HashbyteDeformatter">Hash描述</param>
+            <param name="DeformatterData">签名后的结果</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.RSACryption.SignatureDeformatter(System.String,System.String,System.Byte[])">
+            <summary>
+            RSA签名验证
+            </summary>
+            <param name="strKeyPublic">公钥</param>
+            <param name="strHashbyteDeformatter">Hash描述</param>
+            <param name="DeformatterData">签名后的结果</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.RSACryption.SignatureDeformatter(System.String,System.Byte[],System.String)">
+            <summary>
+            RSA签名验证
+            </summary>
+            <param name="strKeyPublic">公钥</param>
+            <param name="HashbyteDeformatter">Hash描述</param>
+            <param name="strDeformatterData">签名后的结果</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.RSACryption.SignatureDeformatter(System.String,System.String,System.String)">
+            <summary>
+            RSA签名验证
+            </summary>
+            <param name="strKeyPublic">公钥</param>
+            <param name="strHashbyteDeformatter">Hash描述</param>
+            <param name="strDeformatterData">签名后的结果</param>
+            <returns></returns>
+        </member>
+        <member name="F:Harbour.Utils.EnumHelper.HttpParamType.Json">
+            <summary>
+            json数据。默认值。
+            </summary>
+        </member>
+        <member name="F:Harbour.Utils.EnumHelper.HttpParamType.Form">
+            <summary>
+            形如：key=value＆key=value＆key=value
+            </summary>
+        </member>
+        <member name="T:Harbour.Utils.HttpHelper">
+            <summary>
+            Http帮助类
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.HtmlDecode(System.String)">
+            <summary>
+            HTML解码
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.HtmlEncode(System.String)">
+            <summary>
+            HTML编码
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.UrlDecode(System.String)">
+            <summary>
+            URL解码
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.UrlEncode(System.String)">
+            <summary>
+            URL编码
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.IsGet">
+            <summary>
+            是否是get请求
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.IsPost">
+            <summary>
+            是否是post请求
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.IsAjax">
+            <summary>
+            是否是Ajax请求
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.GetQueryString(System.String,System.String)">
+             <summary>
+            Url传参 获得查询字符串中的值
+             </summary>
+             <param name="key">键</param>
+             <param name="defaultValue">默认值</param>
+             <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.GetQueryString(System.String)">
+            <summary>
+            Url传参Url传参 获得查询字符串中的值
+            </summary>
+            <param name="key">键</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.GetQueryInt(System.String,System.Int32)">
+            <summary>
+            Url传参 获得查询字符串中的值
+            </summary>
+            <param name="key">键</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.GetQueryInt(System.String)">
+            <summary>
+            Url传参 获得查询字符串中的值
+            </summary>
+            <param name="key">键</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.GetFormString(System.String,System.String)">
+            <summary>
+            Post表单 获得表单中的值
+            </summary>
+            <param name="key">键</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.GetFormString(System.String)">
+            <summary>
+            Post表单 获得表单中的值
+            </summary>
+            <param name="key">键</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.GetFormInt(System.String,System.Int32)">
+            <summary>
+            Post表单 获得表单中的值
+            </summary>
+            <param name="key">键</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.GetFormInt(System.String)">
+            <summary>
+            Post表单 获得表单中的值
+            </summary>
+            <param name="key">键</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.GetRequestString(System.String,System.String)">
+            <summary>
+            获得请求中的值(Post请求数据优先，Get优先级低)
+            </summary>
+            <param name="key">键</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.GetRequestString(System.String)">
+            <summary>
+            获得请求中的值(Post请求数据优先，Get优先级低)
+            </summary>
+            <param name="key">键</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.GetRequestInt(System.String,System.Int32)">
+            <summary>
+            获得请求中的值(Post请求数据优先，Get优先级低)
+            </summary>
+            <param name="key">键</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.GetRequestInt(System.String)">
+            <summary>
+            获得请求中的值(Post请求数据优先，Get优先级低)
+            </summary>
+            <param name="key">键</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.GetUrlReferrer">
+            <summary>
+            获得上次请求的url
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.GetHost">
+            <summary>
+            获得请求的主机部分
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.GetUrl">
+            <summary>
+            获得请求的url
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.GetRawUrl">
+            <summary>
+            获得请求的原始url
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.GetIP">
+            <summary>
+            获得请求的ip
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.GetBrowserType">
+            <summary>
+            获得请求的浏览器类型
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.GetBrowserName">
+            <summary>
+            获得请求的浏览器名称
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.GetBrowserVersion">
+            <summary>
+            获得请求的浏览器版本
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.GetOSType">
+            <summary>
+            获得请求客户端的操作系统类型
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.GetOSName">
+            <summary>
+            获得请求客户端的操作系统名称
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.IsBrowser">
+            <summary>
+            判断是否是浏览器请求
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.IsMobile">
+            <summary>
+            是否是移动设备请求
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.IsCrawler">
+            <summary>
+            判断是否是搜索引擎爬虫请求
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.GetParmList(System.String)">
+            <summary>
+            获得参数列表
+            </summary>
+            <param name="data">数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.GetRequestData(System.String,System.String)">
+            <summary>
+            获得Http用以请求数据，默认post请求方式
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="postData">发送数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.GetRequestData(System.String,System.String,System.String)">
+            <summary>
+            获得Http用以请求数据
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="method">请求方式</param>
+            <param name="postData">发送数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.GetRequestData(System.String,System.String,System.String,System.Text.Encoding)">
+            <summary>
+            获得Http用以请求数据
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="method">请求方式</param>
+            <param name="postData">发送数据</param>
+            <param name="encoding">编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpHelper.GetRequestData(System.String,System.String,System.String,System.Text.Encoding,System.Int32)">
+            <summary>
+            获得Http用以请求数据
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="method">请求方式</param>
+            <param name="postData">发送数据</param>
+            <param name="encoding">编码</param>
+            <param name="timeout">超时值</param>
+            <returns></returns>
+        </member>
+        <member name="T:Harbour.Utils.HttpParam">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Harbour.Utils.HttpParam.Method">
+            <summary>
+            GET/POST
+            </summary>
+        </member>
+        <member name="P:Harbour.Utils.HttpParam.Url">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Harbour.Utils.HttpParam.ParamType">
+            <summary>
+            参数类型。可选：Json、Form。默认Json。传入Form则会将new { Key1 = Value1, Key2 = Value2}转换成"key1=value1＆key2=value2"形式。
+            </summary>
+        </member>
+        <member name="P:Harbour.Utils.HttpParam.PostParam">
+            <summary>
+            Post参数。
+            <para>可以传入Json对像：new { Key1 = Value1, Key2 = Value2}</para>
+            <para>可以传入Json字符串：{"Key1":"Value1","Key2":"Value2"}</para>
+            <para>可以传入key/value字符串："key1=value1＆key2=value2"</para>
+            <para>可以传入xml字符串等等</para>
+            </summary>
+        </member>
+        <member name="P:Harbour.Utils.HttpParam.GetParam">
+            <summary>
+            Get参数
+            <para>可以传入Json对像：new { Key1 = Value1, Key2 = Value2}</para>
+            <para>可以传入Json字符串：{"Key1":"Value1","Key2":"Value2"}</para>
+            </summary>
+        </member>
+        <member name="P:Harbour.Utils.HttpParam.TimeOut">
+            <summary>
+            请求超时时间。单位：秒。默认值5秒。
+            </summary>
+        </member>
+        <member name="P:Harbour.Utils.HttpParam.Encoding">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Harbour.Utils.HttpParam.CookieContainer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Harbour.Utils.HttpParam.Referer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Harbour.Utils.HttpParam.CertPath">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Harbour.Utils.HttpParam.CertPwd">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Harbour.Utils.HttpParam.ContentType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Harbour.Utils.HttpParam.UserAgent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Harbour.Utils.HttpParam.PostedFile">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Harbour.Utils.HttpUtils">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.HttpUtils.GetStream(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpUtils.GetStream(System.String,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="url"></param>
+            <param name="getParam"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpUtils.PostStream(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpUtils.PostStream(System.String,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="url"></param>
+            <param name="postParam"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpUtils.PostFile(Harbour.Utils.HttpParam)">
+            <summary>
+            文件上传至远程服务器。传入：Url、CookieContainer、PostParam、PostedFile
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.HttpUtils.RequestStream(Harbour.Utils.HttpParam)">
+            <summary>
+            获取响应流
+            </summary>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpUtils.RequestString(Harbour.Utils.HttpParam)">
+            <summary>
+            
+            </summary>
+            <param name="param"></param>
+        </member>
+        <member name="M:Harbour.Utils.HttpUtils.Get(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpUtils.Get(System.String,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="url"></param>
+            <param name="getParam"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpUtils.Get(Harbour.Utils.HttpParam)">
+            <summary>
+            
+            </summary>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpUtils.Get``1(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpUtils.Get``1(System.String,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="url"></param>
+            <param name="getParam"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpUtils.Get``1(Harbour.Utils.HttpParam)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpUtils.GetJR(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpUtils.GetJR(System.String,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="url"></param>
+            <param name="getParam"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpUtils.GetJR(Harbour.Utils.HttpParam)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpUtils.Post(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpUtils.Post(System.String,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="url"></param>
+            <param name="postParam"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpUtils.Post(Harbour.Utils.HttpParam)">
+            <summary>
+            
+            </summary>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpUtils.Post``1(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpUtils.Post``1(System.String,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="url"></param>
+            <param name="postParam"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpUtils.Post``1(Harbour.Utils.HttpParam)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpUtils.PostJR(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpUtils.PostJR(System.String,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="url"></param>
+            <param name="postParam"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.HttpUtils.PostJR(Harbour.Utils.HttpParam)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Harbour.Utils.JsonResponse">
+            <summary>
+            Json返回值类
+            </summary>
+        </member>
+        <member name="P:Harbour.Utils.JsonResponse.Code">
+            <summary>
+            返回码
+            </summary>
+        </member>
+        <member name="P:Harbour.Utils.JsonResponse.Msg">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:Harbour.Utils.JsonResponse.Data">
+            <summary>
+            返回内容
+            </summary>
+        </member>
+        <member name="T:Harbour.Utils.ExcelNPOIHelper">
+            <summary>
+            使用NPOI 第三方导出 Excel 
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.ExcelNPOIHelper.ExportExcel(System.Data.DataTable,System.String)">
+             <summary>
+            使用NPOI 导出 Excel 
+             </summary>
+             <param name="dtSource">DataTable数据</param>
+             <param name="strFileName">文件名</param>
+             <remarks>NPOI认为Excel的第一个单元格是：(0，0)</remarks>
+        </member>
+        <member name="M:Harbour.Utils.ExcelNPOIHelper.ExportExcel(System.Data.DataTable,System.String,System.String)">
+            <summary>
+            DataTable导出到Excel文件
+            </summary>
+            <param name="dtSource">源DataTable</param>
+            <param name="strHeaderText">表头文本</param>
+            <param name="strFileName">保存位置</param>
+        </member>
+        <member name="M:Harbour.Utils.ExcelNPOIHelper.ExportMemoryStream(System.Data.DataTable,System.String)">
+            <summary>
+            DataTable导出到Excel的MemoryStream
+            </summary>
+            <param name="dtSource">源DataTable</param>
+            <param name="strHeaderText">表头文本</param>
+        </member>
+        <member name="M:Harbour.Utils.ExcelNPOIHelper.ImportExcel(System.String)">
+            <summary>
+            读取excel,默认第一行为标头
+            </summary>
+            <param name="strFileName">excel文档路径</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.ExcelNPOIHelper.ImportExcel(System.IO.Stream,System.String,System.Int32)">
+            <summary>
+            读取excel
+            </summary>
+            <param name="ExcelFileStream">Excel文件Stream</param>
+            <param name="SheetName">Sheet名</param>
+            <param name="HeaderRowIndex">表头行号</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:Harbour.Utils.ExcelNPOIHelper.ImportExcel(System.IO.Stream,System.Int32,System.Int32)">
+            <summary>
+            读取excel
+            </summary>
+            <param name="ExcelFileStream">Excel文件Stream</param>
+            <param name="SheetIndex">Sheet索引号</param>
+            <param name="HeaderRowIndex">表头行号</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.ExcelNPOIHelper.ImportDataSetFromExcel2003(System.String,System.Int32)">
+            <summary>
+            由Excel 2003 导入DataSet，如果有多个工作表，则导入多个DataTable
+            </summary>
+            <param name="ExcelFilePath">Excel文件流</param>
+            <param name="HeaderRowIndex">Excel表头行索引</param>
+            <returns>DataSet</returns>
+        </member>
+        <member name="M:Harbour.Utils.ExcelNPOIHelper.ImportDataSetFromExcel2007(System.String,System.Int32)">
+            <summary>
+            由Excel导入DataSet，如果有多个工作表，则导入多个DataTable
+            </summary>
+            <param name="ExcelFilePath">Excel文件流</param>
+            <param name="HeaderRowIndex">Excel表头行索引</param>
+            <returns>DataSet</returns>
+        </member>
+        <member name="T:Harbour.Utils.FileHelper">
+            <summary>
+            文件下载类
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.FileHelper.GetMapPath(System.String)">
+            <summary>
+            获得文件物理路径
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.FileHelper.DeleteFile(System.String)">
+            <summary>
+            删除文件
+            </summary>
+            <param name="Url">文件的相对路径</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.FileHelper.IsFileExists(System.String)">
+            <summary>
+            判断文件是否存在
+            </summary>
+            <param name="Url">文件的相对路径</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.FileHelper.GetFileExtension(System.String)">
+            <summary>
+            获取文件扩展名
+            </summary>
+            <returns>包含指定路径的扩展名（包括“.”）的 System.String、null 或 System.String.Empty。如果 path 为 null，则GetExtension 返回 null。如果 path 不具有扩展名信息，则 GetExtension 返回 Empty。</returns>
+        </member>
+        <member name="M:Harbour.Utils.FileHelper.DownLoad(System.String)">
+            <summary>
+            普通下载
+            </summary>
+            <param name="FileName">文件虚拟路径</param>
+        </member>
+        <member name="M:Harbour.Utils.FileHelper.DownLoad(System.String,System.Int64)">
+            <summary>
+            分块下载
+            </summary>
+            <param name="FileName">文件虚拟路径</param>
+            <param name="BlockSize">分块大小，默认200K</param>
+        </member>
+        <member name="M:Harbour.Utils.FileHelper.ResponseFile(System.Web.HttpRequest,System.Web.HttpResponse,System.String,System.Int64)">
+            <summary>
+             输出硬盘文件，提供下载 支持大文件、续传、速度限制、资源占用小
+            </summary>
+            <param name="Request">Page.Request对象</param>
+            <param name="Response">Page.Response对象</param>
+            <param name="FileName">文件虚拟路径</param>
+            <param name="Speed">每秒允许下载的字节数</param>
+            <returns>返回是否成功</returns>    
+        </member>
+        <member name="M:Harbour.Utils.FileHelper.GetByteBuffer(System.String)">
+            <summary>
+            转换为字节数组
+            </summary>
+            <param name="filename">文件名</param>
+            <returns>字节数组</returns>
+        </member>
+        <member name="M:Harbour.Utils.FileHelper.GetByteBuffer(System.IO.Stream)">
+            <summary>
+            流转化为字节数组
+            </summary>
+            <param name="theStream">流</param>
+            <returns>字节数组</returns>
+        </member>
+        <member name="M:Harbour.Utils.FileHelper.SaveFile(System.Byte[],System.String,System.String,System.Boolean)">
+            <summary>
+            上传文件
+            </summary>
+            <param name="byteData">字节数组</param>
+            <param name="FileName">文件名</param>
+            <param name="SavePath">保存路径</param>
+            <param name="IsNewName">是否重新命名</param>
+        </member>
+        <member name="M:Harbour.Utils.FileHelper.GetUploadFileName(System.String)">
+            <summary>
+            获取新的文件名，自动生成，不会重复
+            </summary>
+            <param name="FileName">旧文件名</param>
+            <returns></returns>
+        </member>
+        <member name="T:Harbour.Utils.IOHelper">
+            <summary>
+            IO帮助类
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.IOHelper.XmlSerialize(System.Object,System.String)">
+            <summary>
+            XML序列化
+            </summary>
+            <param name="obj">序列对象</param>
+            <param name="filePath">XML文件路径</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:Harbour.Utils.IOHelper.XmlDeserialize(System.Type,System.String)">
+            <summary>
+            XML反序列化
+            </summary>
+            <param name="type">目标类型(Type类型)</param>
+            <param name="filePath">XML文件路径</param>
+            <returns>序列对象</returns>
+        </member>
+        <member name="M:Harbour.Utils.IOHelper.XmlSerialize``1(``0)">
+            <summary>
+            文本化XML序列化
+            </summary>
+            <param name="item">对象</param>
+        </member>
+        <member name="M:Harbour.Utils.IOHelper.XmlDeserialize``1(System.String)">
+            <summary>
+            文本化XML反序列化
+            </summary>
+            <param name="str">字符串序列</param>
+        </member>
+        <member name="T:Harbour.Utils.LogHelpers">
+            <summary>
+            日志帮助类。AppSettings节点可以配置Har.LogHelper.Debug=0、Har.LogHelper.Error=0、Har.LogHelper.Write=0来关闭日志记录。
+            如果不传入path参数，默认是在~/Log/下生成日志文件，
+            也可以在AppSettings节点配置Har.LogHelper.Path来设置默认日志文件路径，格式：D:\\File\\Log\\。
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.LogHelpers.Write(System.String,System.String,System.String)">
+            <summary>
+            记录日志
+            </summary>
+            <Param name="content">内容。如需换行可使用：\r\n</Param>
+            <Param name="filePrefixName"></Param>
+            <Param name="path">格式：D:\\File\\Logs\\</Param>
+        </member>
+        <member name="M:Harbour.Utils.LogHelpers.Debug(System.String,System.String,System.String)">
+            <summary>
+            记录调试日志
+            </summary>
+            <Param name="content">内容。如需换行可使用：\r\n</Param>
+            <Param name="filePrefixName"></Param>
+            <Param name="path">格式：D:\\File\\Logs\\</Param>
+        </member>
+        <member name="M:Harbour.Utils.LogHelpers.Error(System.String,System.String,System.String)">
+            <summary>
+            记录错误日志
+            </summary>
+            <Param name="content">内容。如需换行可使用：\r\n</Param>
+            <Param name="filePrefixName"></Param>
+            <Param name="path">格式：D:\\File\\Logs\\</Param>
+        </member>
+        <member name="M:Harbour.Utils.LogHelpers.Write(Harbour.Utils.LogHelpers.LogHelperType,System.String,System.String,System.String)">
+            <summary>
+            filePrefixName是文件名前缀，最好用中文，方便在程序Logs文件下查看。
+            </summary>
+            <Param name="content">内容。如需换行可使用：\r\n</Param>
+            <Param name="filePrefixName"></Param>
+            <Param name="path"></Param>
+            <Param name="logtype"></Param>
+        </member>
+        <member name="T:Harbour.Utils.RandomHelper">
+            <summary>
+            使用Random类生成伪随机数
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.RandomHelper.GetRandomArray``1(``0[])">
+            <summary>
+            对一个数组进行随机排序
+            </summary>
+            <typeparam name="T">数组的类型</typeparam>
+            <param name="arr">需要随机排序的数组</param>
+        </member>
+        <member name="M:Harbour.Utils.RandomHelper.GetRandomNumByCodeNum(System.Int32)">
+            <summary>
+            随机生成不重复数字字符串  
+            </summary>
+            <param name="codeCount">字符串长度</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.RandomHelper.GetRandomByCodeNum(System.Int32)">
+            <summary>
+            随机生成字符串（数字和字母混和）
+            </summary>
+            <param name="codeCount">字符串长度</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.RandomHelper.GetRandomCode(System.String,System.Int32)">
+            <summary>
+            从字符串里随机得到，规定个数的字符串.
+            </summary>
+            <param name="allChar">字符串allChar = "1,2,...,A,B,...";</param>
+            <param name="CodeCount">长度</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.RandomHelper.GetRandomInt(System.Int32,System.Int32)">
+            <summary>
+            生成一个指定范围的随机整数，该随机数范围包括最小值，但不包括最大值
+            </summary>
+            <param name="minNum">最小值</param>
+            <param name="maxNum">最大值</param>
+        </member>
+        <member name="M:Harbour.Utils.RandomHelper.GetRandomInt(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            生成一个指定范围的随机整数，该随机数范围包括最小值，但不包括最大值
+            </summary>
+            <param name="minNum">最小值</param>
+            <param name="maxNum">最大值</param>
+            <param name="Sleep">是否要在生成前将当前线程阻止以避免重复</param>
+        </member>
+        <member name="M:Harbour.Utils.RandomHelper.GetNumber(System.Int32)">
+            <summary>
+            生成随机数字
+            </summary>
+            <param name="Length">生成长度</param>
+        </member>
+        <member name="M:Harbour.Utils.RandomHelper.GetNumber(System.Int32,System.Boolean)">
+            <summary>
+            生成随机数字
+            </summary>
+            <param name="Length">生成长度</param>
+            <param name="Sleep">是否要在生成前将当前线程阻止以避免重复</param>
+        </member>
+        <member name="M:Harbour.Utils.RandomHelper.GetStr(System.Int32)">
+            <summary>
+            生成随机字母与数字
+            </summary>
+            <param name="Length">生成长度</param>
+        </member>
+        <member name="M:Harbour.Utils.RandomHelper.GetStr(System.Int32,System.Boolean)">
+            <summary>
+            生成随机字母与数字
+            </summary>
+            <param name="Length">生成长度</param>
+            <param name="Sleep">是否要在生成前将当前线程阻止以避免重复</param>
+        </member>
+        <member name="M:Harbour.Utils.RandomHelper.GetStr_char(System.Int32)">
+            <summary>
+            生成随机纯字母随机数
+            </summary>
+            <param name="Length">生成长度</param>
+        </member>
+        <member name="M:Harbour.Utils.RandomHelper.GetStr_char(System.Int32,System.Boolean)">
+            <summary>
+            生成随机纯字母随机数
+            </summary>
+            <param name="Length">生成长度</param>
+            <param name="Sleep">是否要在生成前将当前线程阻止以避免重复</param>
+        </member>
+        <member name="T:Harbour.Utils.SharpZip">
+            <summary>
+            Sharp压缩帮助类
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.SharpZip.PackFiles(System.String,System.String)">
+            <summary>
+            压缩
+            </summary> 
+            <param name="filename"> 压缩后的文件名(包含物理路径)</param>
+            <param name="directory">待压缩的文件夹(包含物理路径)</param>
+        </member>
+        <member name="M:Harbour.Utils.SharpZip.UnpackFiles(System.String,System.String)">
+            <summary>
+            解压缩
+            </summary>
+            <param name="file">待解压文件名(包含物理路径)</param>
+            <param name="dir"> 解压到哪个目录中(包含物理路径)</param>
+        </member>
+        <member name="T:Harbour.Utils.ClassZip">
+            <summary>
+            压缩帮助类
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.ClassZip.ZipFileDictory(System.String,ICSharpCode.SharpZipLib.Zip.ZipOutputStream,System.String)">
+            <summary>
+            递归压缩文件夹方法
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.ClassZip.ZipFileDictory(System.String,System.String,System.Int32)">
+            <summary>
+            压缩目录
+            </summary>
+            <param name="FolderToZip">待压缩的文件夹，全路径格式</param>
+            <param name="ZipedFile">压缩后的文件名，全路径格式</param>
+            <param name="level">压缩程度</param>
+        </member>
+        <member name="M:Harbour.Utils.ClassZip.ZipFile(System.String,System.String,System.Int32)">
+            <summary>
+            压缩文件
+            </summary>
+            <param name="FileToZip">要进行压缩的文件名</param>
+            <param name="ZipedFile">压缩后生成的压缩文件名</param>
+            <param name="level">压缩程度</param>
+        </member>
+        <member name="M:Harbour.Utils.ClassZip.Zip(System.String,System.String,System.Int32)">
+            <summary>
+            压缩
+            </summary>
+            <param name="FileToZip">待压缩的文件目录</param>
+            <param name="ZipedFile">生成的目标文件</param>
+            <param name="level">6</param>
+        </member>
+        <member name="M:Harbour.Utils.ClassZip.UnZip(System.String,System.String)">
+            <summary>
+            解压
+            </summary>
+            <param name="FileToUpZip">待解压的文件</param>
+            <param name="ZipedFolder">解压目标存放目录</param>
+        </member>
+        <member name="T:Harbour.Utils.WinRARZip">
+            <summary>
+            WinRAR压缩帮助类
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.WinRARZip.EnZip(System.String,System.String,System.String)">
+            <summary>
+            压缩
+            </summary>
+            <param name="zipname">要解压的文件名</param>
+            <param name="zippath">要压缩的文件目录</param>
+            <param name="dirpath">初始目录</param>
+        </member>
+        <member name="M:Harbour.Utils.WinRARZip.DeZip(System.String,System.String)">
+            <summary>
+            解压缩
+            </summary>
+            <param name="zipname">要解压的文件名</param>
+            <param name="zippath">要解压的文件路径</param>
+        </member>
+        <member name="T:Harbour.Utils.StringHelper">
+            <summary>
+            字符串帮助类
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.StringHelper.GetStringLength(System.String)">
+            <summary>
+            获得字符串的长度,一个汉字的长度为1
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.StringHelper.GetStringLength2(System.String)">
+            <summary>
+            得到字符串长度，一个汉字长度为2
+            </summary>
+            <param name="inputString">参数字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.StringHelper.GetCharCount(System.String,System.Char)">
+            <summary>
+            获得字符串中指定字符的个数
+            </summary>
+            <param name="s">字符串</param>
+            <param name="c">字符</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.StringHelper.IndexOf(System.String,System.Int32)">
+            <summary>
+            获得指定顺序的字符在字符串中的位置索引
+            </summary>
+            <param name="s">字符串</param>
+            <param name="order">顺序</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.StringHelper.IndexOf(System.String,System.Char,System.Int32)">
+            <summary>
+            获得指定顺序的字符在字符串中的位置索引
+            </summary>
+            <param name="s">字符串</param>
+            <param name="c">字符</param>
+            <param name="order">顺序</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.StringHelper.NoHTML(System.String)">
+            <summary>
+            去除HTML标记
+            </summary>
+            <param name="Htmlstring">包括HTML的源码   </param>
+            <returns>已经去除后的文字</returns> 
+        </member>
+        <member name="M:Harbour.Utils.StringHelper.SplitString(System.String,System.String)">
+            <summary>
+            分割字符串
+            </summary>
+            <param name="sourceStr">源字符串</param>
+            <param name="splitStr">分隔字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.StringHelper.SplitString(System.String)">
+            <summary>
+            分割字符串,默认分隔符","
+            </summary>
+            <param name="sourceStr">源字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.StringHelper.SubString(System.String,System.Int32,System.Int32)">
+            <summary>
+            截取字符串
+            </summary>
+            <param name="sourceStr">源字符串</param>
+            <param name="startIndex">开始位置的索引</param>
+            <param name="length">子字符串的长度</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.StringHelper.SubString(System.String,System.Int32)">
+            <summary>
+            截取字符串
+            </summary>
+            <param name="sourceStr">源字符串</param>
+            <param name="length">子字符串的长度</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.StringHelper.TrimStart(System.String,System.String)">
+            <summary>
+            移除前导字符串
+            </summary>
+            <param name="sourceStr">源字符串</param>
+            <param name="trimStr">移除字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.StringHelper.TrimStart(System.String,System.String,System.Boolean)">
+            <summary>
+            移除前导字符串
+            </summary>
+            <param name="sourceStr">源字符串</param>
+            <param name="trimStr">移除字符串</param>
+            <param name="ignoreCase">是否忽略大小写</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.StringHelper.TrimEnd(System.String,System.String)">
+            <summary>
+            移除后导字符串
+            </summary>
+            <param name="sourceStr">源字符串</param>
+            <param name="trimStr">移除字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.StringHelper.TrimEnd(System.String,System.String,System.Boolean)">
+            <summary>
+            移除后导字符串
+            </summary>
+            <param name="sourceStr">源字符串</param>
+            <param name="trimStr">移除字符串</param>
+            <param name="ignoreCase">是否忽略大小写</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.StringHelper.Trim(System.String,System.String)">
+            <summary>
+            移除前导和后导字符串
+            </summary>
+            <param name="sourceStr">源字符串</param>
+            <param name="trimStr">移除字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.StringHelper.Trim(System.String,System.String,System.Boolean)">
+            <summary>
+            移除前导和后导字符串
+            </summary>
+            <param name="sourceStr">源字符串</param>
+            <param name="trimStr">移除字符串</param>
+            <param name="ignoreCase">是否忽略大小写</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.StringHelper.StringTrimAll(System.String)">
+            <summary>
+            去除字符串的所有空格。
+            </summary>
+            <param name="text">字符串</param>
+            <returns>字符串</returns>
+        </member>
+        <member name="M:Harbour.Utils.StringHelper.NumricTrimAll(System.String)">
+            <summary>
+            去除数值字符串的所有空格。
+            </summary>
+            <param name="numricString">数值字符串</param>
+            <returns>String</returns>
+        </member>
+        <member name="T:Harbour.Utils.TypeHelper">
+            <summary>
+            类型帮助类
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.TypeHelper.StringToInt(System.String,System.Int32)">
+            <summary>
+            将string类型转换成int类型
+            </summary>
+            <param name="s">目标字符串</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.TypeHelper.StringToInt(System.String)">
+            <summary>
+            将string类型转换成int类型
+            </summary>
+            <param name="s">目标字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.TypeHelper.ObjectToInt(System.Object,System.Int32)">
+            <summary>
+            将object类型转换成int类型
+            </summary>
+            <param name="Object">目标对象</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.TypeHelper.ObjectToInt(System.Object)">
+            <summary>
+            将object类型转换成int类型
+            </summary>
+            <param name="Object">目标对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.TypeHelper.StringArrayToIntArray(System.String[],System.Int32)">
+             <summary>
+            Harbour 将指定的字符串数组转换成整型数组
+             </summary>
+             <param name="sourceStr">字符串数组</param>
+             <param name="defaultValue">默认值</param>
+             <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.TypeHelper.StringArrayToIntArray(System.String[])">
+            <summary>
+            Harbour 将指定的字符串数组转换成整型数组
+            </summary>
+            <param name="sourceStr">字符串数组</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.TypeHelper.IntObjectToInt(System.Nullable{System.Int32},System.Int32)">
+            <summary>
+            int?转成int
+            </summary>
+            <param name="Int"></param>
+            <param name="defaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.TypeHelper.IntObjectToInt(System.Nullable{System.Int32})">
+            <summary>
+            int?转成int
+            </summary>
+            <param name="Int"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.TypeHelper.StringToBool(System.String,System.Boolean)">
+            <summary>
+            将string类型转换成bool类型
+            </summary>
+            <param name="s">目标字符串</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.TypeHelper.ToBool(System.String)">
+            <summary>
+            将string类型转换成bool类型
+            </summary>
+            <param name="s">目标字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.TypeHelper.ObjectToBool(System.Object,System.Boolean)">
+            <summary>
+            将object类型转换成bool类型
+            </summary>
+            <param name="Object">目标对象</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.TypeHelper.ObjectToBool(System.Object)">
+            <summary>
+            将object类型转换成bool类型
+            </summary>
+            <param name="Object">目标对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.TypeHelper.StringToDateTime(System.String,System.DateTime)">
+            <summary>
+            将string类型转换成datetime类型
+            </summary>
+            <param name="String">目标字符串</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.TypeHelper.StringToDateTime(System.String)">
+            <summary>
+            将string类型转换成datetime类型
+            </summary>
+            <param name="s">目标字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.TypeHelper.ObjectToDateTime(System.Object,System.DateTime)">
+            <summary>
+            将object类型转换成datetime类型
+            </summary>
+            <param name="Object">目标对象</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.TypeHelper.ObjectToDateTime(System.Object)">
+            <summary>
+            将object类型转换成datetime类型
+            </summary>
+            <param name="Object">目标对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.TypeHelper.StringToDecimal(System.String,System.Decimal)">
+            <summary>
+            将string类型转换成decimal类型
+            </summary>
+            <param name="s">目标字符串</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.TypeHelper.StringToDecimal(System.String)">
+            <summary>
+            将string类型转换成decimal类型
+            </summary>
+            <param name="s">目标字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.TypeHelper.ObjectToDecimal(System.Object,System.Decimal)">
+            <summary>
+            将object类型转换成decimal类型
+            </summary>
+            <param name="Object">目标对象</param>
+            <param name="defaultValue">默认值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.TypeHelper.ObjectToDecimal(System.Object)">
+            <summary>
+            将object类型转换成decimal类型
+            </summary>
+            <param name="Object">目标对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.TypeHelper.IntToStringBySign(System.Int32[],System.String)">
+            <summary>
+            将int数组按指定分隔符转换成字符串
+            </summary>
+            <param name="ints">int s数组</param>
+            <param name="sign">分隔符</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.TypeHelper.IntToStringBySign(System.Int32[],System.String,System.String)">
+            <summary>
+            将int数组按指定分隔符转换成字符串
+            </summary>
+            <param name="ints">int s数组</param>
+            <param name="sign">分隔符</param>
+            <param name="defaultStr">默认字符</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.TypeHelper.StringArryToStringBySign(System.String[],System.String)">
+            <summary>
+            将string数组按指定分隔符转换成字符串
+            </summary>
+            <param name="ints">string s数组</param>
+            <param name="sign">分隔符</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.TypeHelper.ObjectToString(System.Object)">
+            <summary>
+            Object转成String
+            </summary>
+            <param name="ob">Object 对象</param>
+            <returns>空对象返回Empty</returns>
+        </member>
+        <member name="T:Harbour.Utils.ValidateHelper">
+            <summary>
+            验证帮助类
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.IsBase64String(System.String)">
+            <summary>
+            判断是否是Base64字符串
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.IsSafeSqlString(System.String)">
+            <summary>
+            判断当前字符串是否存在SQL注入
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.IsEmail(System.String)">
+            <summary>
+            是否为邮箱名
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.IsMobile(System.String)">
+            <summary>
+            是否为手机号
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.IsPhone(System.String)">
+            <summary>
+            是否为固话号
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.IsIdCard(System.String)">
+            <summary>
+            是否是身份证号
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.CheckIDCard18(System.String)">
+            <summary>
+            是否为18位身份证号
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.CheckIDCard15(System.String)">
+            <summary>
+            是否为15位身份证号
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.IsDate(System.String)">
+            <summary>
+            是否为日期
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.IsNumeric(System.String)">
+            <summary>
+            是否是数值(包括整数和小数)
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.IsInt(System.String)">
+            <summary>
+            验证是否为整数 如果为空，认为验证不合格 返回false
+            </summary>
+            <param name="number">要验证的整数</param>        
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.IsNumericArray(System.String[])">
+            <summary>
+            是否是数值(包括整数和小数)
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.IsNumericRule(System.String,System.String)">
+            <summary>
+            是否是数值(包括整数和小数)
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.IsNumericRule(System.String)">
+            <summary>
+            是否是数值(包括整数和小数)
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.IsLong(System.Object)">
+            <summary>
+            判断对象是否为正确的Long值。
+            </summary>
+            <param name="obj">对象。</param>
+            <returns>Long值。</returns>
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.IsFloat(System.Object)">
+            <summary>
+            判断对象是否为正确的Float值。
+            </summary>
+            <param name="obj">对象。</param>
+            <returns>Float值。</returns>
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.IsDouble(System.Object)">
+            <summary>
+            判断对象是否为正确的Double值。
+            </summary>
+            <param name="obj">对象。</param>
+            <returns>Double值。</returns>
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.IsDecimal(System.Object)">
+            <summary>
+            判断对象是否为正确的Decimal值。
+            </summary>
+            <param name="obj">对象。</param>
+            <returns>Decimal值。</returns>
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.IsZipCode(System.String)">
+            <summary>
+            是否为邮政编码
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.IsImgFileName(System.String)">
+            <summary>
+            是否是图片文件名
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.IsVideoFileName(System.String)">
+            <summary>
+            是否是视频文件名
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.IsIP(System.String)">
+            <summary>
+            是否为IP
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.InIP(System.String,System.String)">
+            <summary>
+            判断一个ip是否在另一个ip内
+            </summary>
+            <param name="sourceIP">检测ip</param>
+            <param name="targetIP">匹配ip</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.InIPList(System.String,System.String[])">
+            <summary>
+            判断一个ip是否在另一个ip内
+            </summary>
+            <param name="sourceIP">检测ip</param>
+            <param name="targetIPList">匹配ip列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.InIPList(System.String,System.String)">
+            <summary>
+            判断一个ip是否在另一个ip内
+            </summary>
+            <param name="sourceIP">检测ip</param>
+            <param name="targetIPStr">匹配ip</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.BetweenPeriod(System.String[],System.String@)">
+            <summary>
+            判断当前时间是否在指定的时间段内
+            </summary>
+            <param name="periodList">指定时间段</param>
+            <param name="liePeriod">所处时间段</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.BetweenPeriod(System.String,System.String@)">
+            <summary>
+            判断当前时间是否在指定的时间段内
+            </summary>
+            <param name="periodStr">指定时间段</param>
+            <param name="liePeriod">所处时间段</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.BetweenPeriod(System.String)">
+            <summary>
+            判断当前时间是否在指定的时间段内
+            </summary>
+            <param name="periodList">指定时间段</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.IsNullOrEmpty``1(``0)">
+            <summary>
+            判断对象是否为空，为空返回true,("")为true
+            </summary>
+            <typeparam name="T">要验证的对象的类型</typeparam>
+            <param name="data">要验证的对象</param>        
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.IsNullOrEmpty(System.Object)">
+            <summary>
+            判断对象是否为空，为空返回true
+            </summary>
+            <param name="data">要验证的对象</param>
+        </member>
+        <member name="M:Harbour.Utils.ValidateHelper.IsHasCHZN(System.String)">
+            <summary>
+            检测是否有中文字符
+            </summary>
+            <param name="inputData"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Harbour.Utils.YZMHelper">
+            <summary>
+            验证图片类
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.YZMHelper.Next(System.Int32)">
+            <summary>
+            获得下一个随机数
+            </summary>
+            <param name="max">最大值</param>
+        </member>
+        <member name="M:Harbour.Utils.YZMHelper.Next(System.Int32,System.Int32)">
+            <summary>
+            获得下一个随机数
+            </summary>
+            <param name="min">最小值</param>
+            <param name="max">最大值</param>
+        </member>
+        <member name="M:Harbour.Utils.YZMHelper.GetRandomColor">
+            <summary>
+            字体随机颜色
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.YZMHelper.TwistImage(System.Drawing.Bitmap,System.Boolean,System.Double,System.Double)">
+            <summary>
+            正弦曲线Wave扭曲图片
+            </summary>
+            <param name="srcBmp">图片路径</param>
+            <param name="bXDir">如果扭曲则选择为True</param>
+            <param name="dMultValue">波形的幅度倍数，越大扭曲的程度越高,一般为3</param>
+            <param name="dPhase">波形的起始相位,取值区间[0-2*PI)</param>
+        </member>
+        <member name="M:Harbour.Utils.YZMHelper.#ctor">
+            <summary>
+            初始化
+            </summary>
+        </member>
+        <member name="M:Harbour.Utils.YZMHelper.GetCode(System.Int32)">
+            <summary>
+            生成验证码
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.YZMHelper.CreateImage(System.String,System.Int32,System.Int32)">
+            <summary>
+            绘制验证码
+            </summary>
+            <param name="Code">验证码</param>
+            <param name="letterWidth">单个字体的宽度范围</param>
+            <param name="letterHeight">单个字体的高度范围</param>
+            <returns></returns>
+        </member>
+        <member name="M:Harbour.Utils.YZMHelper.CreateImageByte(System.String,System.Int32,System.Int32)">
+            <summary>
+            绘制验证码
+            </summary>
+        </member>
+    </members>
+</doc>
