@@ -467,6 +467,8 @@ namespace GSMMODEM
                     LogHelpers.Error(errTxt);
                     throw new Exception("短信发送失败:" + ex.ToString());
                 }
+                //打印日志
+                LogHelpers.Write(string.Format("  短信已发送:{0}\r\n{1}:{2}", tmp, phone, msg));
                 if (tmp.Contains("OK"))
                 {
                     continue;
