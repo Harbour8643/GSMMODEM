@@ -34,7 +34,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\GSMMODEM.XML</DocumentationFile>
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="Entity\CodedMessage.cs" />
     <Compile Include="Entity\DecodedMessage.cs" />
-    <Compile Include="Exceptions\GsmModemException.cs" />
     <Compile Include="GsmModem.cs" />
     <Compile Include="ICom.cs" />
     <Compile Include="Com.cs" />

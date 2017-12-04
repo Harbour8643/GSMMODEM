@@ -6,7 +6,7 @@ namespace GSMMODEM
 {
 
     /// <summary>
-    /// 日志帮助类。AppSettings节点可以配置GSMMODEM.Debug=0、GSMMODEM.Error=0、GSMMODEM.Write=0来关闭日志记录。
+    /// 日志帮助类。AppSettings节点可以配置GSMMODEM.Debug=true、GSMMODEM.Error=true、GSMMODEM.Write=true来关闭日志记录。
     /// 如果不传入path参数，默认是在~/Log/下生成日志文件，
     /// 也可以在AppSettings节点配置GSMMODEM.Path来设置默认日志文件路径，格式：D:\\File\\Log\\。
     /// </summary>

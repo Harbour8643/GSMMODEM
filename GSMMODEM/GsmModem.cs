@@ -404,11 +404,12 @@ namespace GSMMODEM
                     temp = _com.ReadExisting();
                     result += temp;
                     Thread.Sleep(100);
-                    if ((DateTime.Now - startTime).Seconds > 20)//运行时间大于20s，结束循环
+                    if ((DateTime.Now - startTime).Seconds > 15)//运行时间大于20s，结束循环
                     {
                         //打印日志
                         LogHelpers.Error(string.Format("  获取短信返回状态码超时，result:{0}", result));
-                        break;
+                        throw new Exception("  Read:" + temp);
+                        //break;
                     }
                 }
                 return result;
