@@ -6,8 +6,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.IO.Ports;
+using System.Diagnostics;
 using System.Threading;
 
 namespace GSMMODEM
@@ -55,12 +54,9 @@ namespace GSMMODEM
         #endregion 构造函数
 
         #region 私有字段
-        private ICom _com;              //私有字段 串口对象
-
-        private Queue<int> newMsgIndexQueue = new Queue<int>();            //新消息序号
-
-        private string msgCenter = string.Empty;           //短信中心号码
-
+        private ICom _com;//私有字段 串口对象
+        private Queue<int> newMsgIndexQueue = new Queue<int>();//新消息序号
+        private string msgCenter = string.Empty;//短信中心号码
         #endregion 私有字段
 
         #region 属性
@@ -194,6 +190,9 @@ namespace GSMMODEM
             }
             catch (Exception ex)
             {
+                //打印日志
+                string errTxt = string.Format("  sp_DataReceived ReadLine Exception:{0}\r\n{1}\r\n{2}", "暂不处理", ex.Message, ex.StackTrace);
+                LogHelpers.Error(errTxt);
                 //throw new Exception("sp_DataReceived ReadLine Exception:" + ex.ToString() );
                 //这个异常暂时不处理，如果Modem不能正常通讯，应在此断开连接重连；
                 ModemStatusMsg = "sp_DataReceived ReadLine Exception:" + ex.ToString();
@@ -270,13 +269,14 @@ namespace GSMMODEM
                     _com.DataReceived += sp_DataReceived;
 
                     return true;
-
                 }
                 catch (Exception ex)
                 {
+                    //打印日志
+                    string errTxt = string.Format("  Connect Send AT Exception Result:{0}\r\n{1}\r\n{2}", sResult, ex.Message, ex.StackTrace);
+                    LogHelpers.Error(errTxt);
                     throw new Exception(" Connect Send AT Exception:" + ex.ToString() + " Result:" + sResult);
                 }
-
             }
             return false;
         }
@@ -292,6 +292,9 @@ namespace GSMMODEM
             }
             catch (Exception ex)
             {
+                //打印日志
+                string errTxt = string.Format("  Close:{0}\r\n{1}\r\n{2}", "设备关闭函数", ex.Message, ex.StackTrace);
+                LogHelpers.Error(errTxt);
                 throw ex;
             }
         }
@@ -307,13 +310,16 @@ namespace GSMMODEM
         public string GetMachineNo()
         {
             string result = SendAT("AT+CGMR");
-            
+
             if (result.Length > 7 && result.Substring(result.Length - 4, 3).Trim() == "OK")
             {
                 result = result.Substring(0, result.Length - 5).Trim();
             }
             else
             {
+                //打印日志
+                string errTxt = string.Format("  获取机器码失败:{0}", result);
+                LogHelpers.Error(errTxt);
                 throw new Exception("获取机器码失败:" + result);
             }
             return result;
@@ -348,6 +354,9 @@ namespace GSMMODEM
                 }
                 else
                 {
+                    //打印日志
+                    string errTxt = string.Format("  获取短信中心失败:{0}", tmp);
+                    LogHelpers.Error(errTxt);
                     throw new Exception("获取短信中心失败:" + tmp);
                 }
             }
@@ -379,26 +388,37 @@ namespace GSMMODEM
             }
             catch (Exception ex)
             {
+                //打印日志
+                string errTxt = string.Format("  SendAT:{0}\r\n{1}\r\n{2}", "发送AT指令", ex.Message, ex.StackTrace);
+                LogHelpers.Error(errTxt);
                 _com.DataReceived += sp_DataReceived;
                 throw ex;
             }
 
             //接收数据 循环读取数据 直至收到“OK”或“ERROR”
             string temp = string.Empty;
-            DateTime StartTime = DateTime.Now;
+            DateTime startTime = DateTime.Now;
             try
             {
-
                 while (!(temp.Contains("OK") || temp.Contains("ERROR")))  //&& (DateTime.Now.CompareTo(StartTime) < 60000)
                 {
                     temp = _com.ReadExisting();
                     result += temp;
                     Thread.Sleep(100);
+                    if ((DateTime.Now - startTime).Seconds > 20)//运行时间大于20s，结束循环
+                    {
+                        //打印日志
+                        LogHelpers.Error(string.Format("  获取短信返回状态码超时，result:{0}", result));
+                        break;
+                    }
                 }
                 return result;
             }
             catch (Exception ex)
             {
+                //打印日志
+                string errTxt = string.Format("  Read:{0}\r\n{1}\r\n{2}", temp, ex.Message, ex.StackTrace);
+                LogHelpers.Error(errTxt);
                 throw new Exception(ex.ToString() + "  Read:" + temp);
             }
             finally
@@ -440,15 +460,19 @@ namespace GSMMODEM
 
                     tmp = SendAT(cm.PduCode + (char)(26));  //26 Ctrl+Z ascii码
                 }
-                catch (Exception ee)
+                catch (Exception ex)
                 {
-                    throw new Exception("短信发送失败:" + ee.ToString());
+                    //打印日志
+                    string errTxt = string.Format("  短信发送失败:{0}\r\n{1}\r\n{2}", "SendMsg", ex.Message, ex.StackTrace);
+                    LogHelpers.Error(errTxt);
+                    throw new Exception("短信发送失败:" + ex.ToString());
                 }
                 if (tmp.Contains("OK"))
                 {
                     continue;
                 }
-
+                //打印日志
+                LogHelpers.Error(string.Format("  短信发送失败:{0}", tmp));
                 throw new Exception("短信发送失败:" + tmp);
             }
         }
@@ -463,14 +487,14 @@ namespace GSMMODEM
         /// <returns>未读信息列表（中心号码，手机号码，发送时间，短信内容）</returns>
         public List<DecodedMessage> GetUnreadMsg(out string sInfo)
         {
-            return GetReceiveMsg(0,out sInfo);
+            return GetReceiveMsg(0, out sInfo);
         }
 
         /// <summary>
         /// 获取已读或未读信息列表
         /// </summary>
         /// <returns>未读信息列表（中心号码，手机号码，发送时间，短信内容）</returns>
-        public List<DecodedMessage> GetReceiveMsg(int iMsgType,out string sInfo)
+        public List<DecodedMessage> GetReceiveMsg(int iMsgType, out string sInfo)
         {
             List<DecodedMessage> result = new List<DecodedMessage>();
             string[] temp = null;
@@ -506,6 +530,9 @@ namespace GSMMODEM
                             catch (Exception ex)
                             {
                                 sInfo += " DECODER:" + ex.ToString() + " ReadPDUindex: " + iCurIndex + " sReadPDU:" + sRead;
+                                //打印日志
+                                string errTxt = string.Format("  sInfo:{0}\r\n{1}\r\n{2}", sInfo, ex.Message, ex.StackTrace);
+                                LogHelpers.Error(errTxt);
                                 //return result;
                                 //throw ex;
                             }
@@ -518,6 +545,9 @@ namespace GSMMODEM
                                 catch (Exception ex)
                                 {
                                     sInfo += " DEL:" + ex.ToString();
+                                    //打印日志
+                                    string errTxt = string.Format("  sInfo:{0}\r\n{1}\r\n{2}", sInfo, ex.Message, ex.StackTrace);
+                                    LogHelpers.Error(errTxt);
                                     //throw ex;
                                 }
                             }
@@ -555,11 +585,16 @@ namespace GSMMODEM
             }
             catch (Exception ex)
             {
+                //打印日志
+                string errTxt = string.Format("  ReadMsgByIndex:{0}\r\n{1}\r\n{2}", temp, ex.Message, ex.StackTrace);
+                LogHelpers.Error(errTxt);
                 throw ex;
             }
 
             if (temp.Contains("ERROR"))
             {
+                //打印日志
+                LogHelpers.Error("没有此短信");
                 throw new Exception("没有此短信");
             }
             temp = temp.Split((char)(13))[2];       //取出PDU串(char)(13)为0x0a即\r 按\r分为多个字符串 第3个是PDU串
@@ -574,11 +609,14 @@ namespace GSMMODEM
                 }
                 catch (Exception ex)
                 {
+                    //打印日志
+                    string errTxt = string.Format("  {0}\r\n{1}", ex.Message, ex.StackTrace);
+                    LogHelpers.Error(errTxt);
                     throw ex;
                 }
             }
 
-            return pe.PDUDecoder(index,temp.Replace((char)(13),' ').Trim());
+            return pe.PDUDecoder(index, temp.Replace((char)(13), ' ').Trim());
             //return msgCenter + "," + phone + "," + time + "," + msg;
         }
 
@@ -600,7 +638,8 @@ namespace GSMMODEM
             {
                 return;
             }
-
+            //打印日志
+            LogHelpers.Error("删除失败:" + sATResult);
             throw new Exception("删除失败:" + sATResult);
         }
 
@@ -666,8 +705,12 @@ namespace GSMMODEM
                     return true;
                 }
             }
-            catch (Exception e) {
-                throw new Exception("AT+ESUO=" + SimCardNo  +" Fail:" + e.ToString());
+            catch (Exception ex)
+            {
+                //打印日志
+                string errTxt = string.Format("  AT+ESUO=:{0}\r\n{1}\r\n{2}", SimCardNo, ex.Message, ex.StackTrace);
+                LogHelpers.Error(errTxt);
+                throw new Exception("AT+ESUO=" + SimCardNo + " Fail:" + ex.ToString());
             }
             return false;
             //throw new Exception("设置失败:" + sATResult);  
@@ -676,7 +719,7 @@ namespace GSMMODEM
         /// <summary>
         /// 设置串口是否禁止休眠
         /// </summary>
-        public bool SetMTKSimSleep(bool  bSleep, out string sATResult)
+        public bool SetMTKSimSleep(bool bSleep, out string sATResult)
         {
             sATResult = "";// "AT+ESUO=" + SimCardNo + " Result:";
             try
@@ -695,9 +738,12 @@ namespace GSMMODEM
                     return true;
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw new Exception("AT+ESUO=" + bSleep.ToString() + " Fail:" + e.ToString());
+                //打印日志
+                string errTxt = string.Format("  AT+ESUO=:{0}\r\n{1}\r\n{2}", bSleep.ToString(), ex.Message, ex.StackTrace);
+                LogHelpers.Error(errTxt);
+                throw new Exception("AT+ESUO=" + bSleep.ToString() + " Fail:" + ex.ToString());
             }
             return false;
             //throw new Exception("设置失败:" + sATResult);  

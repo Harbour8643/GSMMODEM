@@ -38,8 +38,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.configuration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entity\CodedMessage.cs" />
@@ -48,6 +47,7 @@
     <Compile Include="GsmModem.cs" />
     <Compile Include="ICom.cs" />
     <Compile Include="Com.cs" />
+    <Compile Include="LogHelpers\LogHelpers.cs" />
     <Compile Include="PDUEncoding.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

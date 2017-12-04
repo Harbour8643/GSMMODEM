@@ -1,19 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.IO.Ports;
 
 namespace GSMMODEM
 {
     class Com : ICom
     {
-        private System.IO.Ports.SerialPort sp = new System.IO.Ports.SerialPort();
+        private SerialPort sp = new SerialPort();
         public event EventHandler DataReceived;
         public Com()
         {
-            sp.DataReceived +=new System.IO.Ports.SerialDataReceivedEventHandler(sp_DataReceived);
+            sp.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceived);
         }
 
-        public void sp_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
+        public void sp_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             OnDataReceived(e);
         }
@@ -62,7 +61,7 @@ namespace GSMMODEM
             }
         }
 
-        public System.IO.Ports.Handshake Handshake
+        public Handshake Handshake
         {
             get
             {
@@ -79,7 +78,7 @@ namespace GSMMODEM
             get { return sp.IsOpen; }
         }
 
-        public System.IO.Ports.Parity Parity
+        public Parity Parity
         {
             get
             {
@@ -127,7 +126,7 @@ namespace GSMMODEM
             }
         }
 
-        public System.IO.Ports.StopBits StopBits
+        public StopBits StopBits
         {
             get
             {
@@ -139,7 +138,7 @@ namespace GSMMODEM
             }
         }
 
-        
+
 
         public void Close()
         {
@@ -172,10 +171,12 @@ namespace GSMMODEM
             try
             {
                 sResult = sp.ReadExisting();
-
             }
             catch (Exception ex)
             {
+                //打印日志
+                string errTxt = string.Format("  {0}\r\n{1}", ex.Message, ex.StackTrace);
+                LogHelpers.Error(errTxt);
                 throw ex;
             }
             return sResult;
@@ -187,10 +188,12 @@ namespace GSMMODEM
             try
             {
                 sResult = sp.ReadLine();
-
             }
             catch (Exception ex)
             {
+                //打印日志
+                string errTxt = string.Format("  {0}\r\n{1}", ex.Message, ex.StackTrace);
+                LogHelpers.Error(errTxt);
                 throw ex;
             }
             return sResult;
