@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // 特性集控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("GSMMODEM")]
-[assembly: AssemblyDescription("短信猫API")]
+[assembly: AssemblyDescription("GSMMODEM")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Harbour")]
+[assembly: AssemblyCompany("Harbour<864353016@qq.com>")]
 [assembly: AssemblyProduct("GSMMODEM")]
-[assembly: AssemblyCopyright("Harbour")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Harbour<864353016@qq.com>")]
+[assembly: AssemblyTrademark("Harbour")]
 [assembly: AssemblyCulture("")]
 
 // 将 ComVisible 设置为 false 使此程序集中的类型
@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 //      生成号
 //      修订号
 //
-[assembly: AssemblyVersion("1.1.0.0")]
-[assembly: AssemblyFileVersion("1.1.0.0")]
+[assembly: AssemblyVersion("1.2.0.0")]
+[assembly: AssemblyFileVersion("1.2.0.0")]
