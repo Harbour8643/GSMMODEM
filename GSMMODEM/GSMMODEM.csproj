@@ -46,6 +46,8 @@
   <ItemGroup>
     <Compile Include="Entity\CodedMessage.cs" />
     <Compile Include="Entity\DecodedMessage.cs" />
+    <Compile Include="GSMMessage\ISendMsg.cs" />
+    <Compile Include="GSMMessage\SimGSMMsg.cs" />
     <Compile Include="GsmModem.cs" />
     <Compile Include="ICom.cs" />
     <Compile Include="Com.cs" />
