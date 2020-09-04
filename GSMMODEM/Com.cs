@@ -5,11 +5,11 @@ namespace GSMMODEM
 {
     class Com : ICom
     {
-        private SerialPort sp = new SerialPort();
+        private SerialPort serialPort = new SerialPort();
         public event EventHandler DataReceived;
         public Com()
         {
-            sp.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceived);
+            serialPort.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceived);
         }
 
         public void sp_DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -19,21 +19,18 @@ namespace GSMMODEM
 
         protected virtual void OnDataReceived(EventArgs e)
         {
-            if (DataReceived != null)
-            {
-                DataReceived(this, e);
-            }
+            DataReceived?.Invoke(this, e);
         }
 
         public int BaudRate
         {
             get
             {
-                return sp.BaudRate;
+                return serialPort.BaudRate;
             }
             set
             {
-                sp.BaudRate = value;
+                serialPort.BaudRate = value;
             }
         }
 
@@ -41,11 +38,11 @@ namespace GSMMODEM
         {
             get
             {
-                return sp.DataBits;
+                return serialPort.DataBits;
             }
             set
             {
-                sp.DataBits = value;
+                serialPort.DataBits = value;
             }
         }
 
@@ -53,11 +50,11 @@ namespace GSMMODEM
         {
             get
             {
-                return sp.DtrEnable;
+                return serialPort.DtrEnable;
             }
             set
             {
-                sp.DtrEnable = value;
+                serialPort.DtrEnable = value;
             }
         }
 
@@ -65,28 +62,28 @@ namespace GSMMODEM
         {
             get
             {
-                return sp.Handshake;
+                return serialPort.Handshake;
             }
             set
             {
-                sp.Handshake = value;
+                serialPort.Handshake = value;
             }
         }
 
         public bool IsOpen
         {
-            get { return sp.IsOpen; }
+            get { return serialPort.IsOpen; }
         }
 
         public Parity Parity
         {
             get
             {
-                return sp.Parity;
+                return serialPort.Parity;
             }
             set
             {
-                sp.Parity = value;
+                serialPort.Parity = value;
             }
         }
 
@@ -94,11 +91,11 @@ namespace GSMMODEM
         {
             get
             {
-                return sp.PortName;
+                return serialPort.PortName;
             }
             set
             {
-                sp.PortName = value;
+                serialPort.PortName = value;
             }
         }
 
@@ -106,11 +103,11 @@ namespace GSMMODEM
         {
             get
             {
-                return sp.ReadTimeout;
+                return serialPort.ReadTimeout;
             }
             set
             {
-                sp.ReadTimeout = value;
+                serialPort.ReadTimeout = value;
             }
         }
 
@@ -118,11 +115,11 @@ namespace GSMMODEM
         {
             get
             {
-                return sp.RtsEnable;
+                return serialPort.RtsEnable;
             }
             set
             {
-                sp.RtsEnable = value;
+                serialPort.RtsEnable = value;
             }
         }
 
@@ -130,11 +127,11 @@ namespace GSMMODEM
         {
             get
             {
-                return sp.StopBits;
+                return serialPort.StopBits;
             }
             set
             {
-                sp.StopBits = value;
+                serialPort.StopBits = value;
             }
         }
 
@@ -142,27 +139,27 @@ namespace GSMMODEM
 
         public void Close()
         {
-            sp.Close();
+            serialPort.Close();
         }
 
         public void DiscardInBuffer()
         {
-            sp.DiscardInBuffer();
+            serialPort.DiscardInBuffer();
         }
 
         public void Open()
         {
-            sp.Open();
+            serialPort.Open();
         }
 
         public int ReadByte()
         {
-            return sp.ReadByte();
+            return serialPort.ReadByte();
         }
 
         public int ReadChar()
         {
-            return sp.ReadChar();
+            return serialPort.ReadChar();
         }
 
         public string ReadExisting()
@@ -170,7 +167,7 @@ namespace GSMMODEM
             string sResult = string.Empty;
             try
             {
-                sResult = sp.ReadExisting();
+                sResult = serialPort.ReadExisting();
             }
             catch (Exception ex)
             {
@@ -187,7 +184,7 @@ namespace GSMMODEM
             string sResult = string.Empty;
             try
             {
-                sResult = sp.ReadLine();
+                sResult = serialPort.ReadLine();
             }
             catch (Exception ex)
             {
@@ -201,17 +198,17 @@ namespace GSMMODEM
 
         public string ReadTo(string value)
         {
-            return sp.ReadTo(value);
+            return serialPort.ReadTo(value);
         }
 
         public void Write(string text)
         {
-            sp.Write(text);
+            serialPort.Write(text);
         }
 
         public void WriteLine(string text)
         {
-            sp.WriteLine(text);
+            serialPort.WriteLine(text);
         }
     }
 }

@@ -51,7 +51,10 @@
     <Compile Include="GsmModem.cs" />
     <Compile Include="ICom.cs" />
     <Compile Include="Com.cs" />
+    <Compile Include="LogHelpers\FileLogger.cs" />
+    <Compile Include="LogHelpers\FileLoggerWriter.cs" />
     <Compile Include="LogHelpers\LogHelpers.cs" />
+    <Compile Include="LogHelpers\LogLevel.cs" />
     <Compile Include="PDUEncoding.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
